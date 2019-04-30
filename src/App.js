@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from "react-redux";
+import Form from './components/Form';
 
-function App() {
+function App({ articles }) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>React + Redux</p>
       </header>
+      <ul>
+        {articles.map(el => (
+          <li key={el.id}>{el.title}</li>
+        ))}
+      </ul>
+      <div className="col-md-4 offset-md-1">
+        <h2>Add a new article</h2>
+        <Form />
+      </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { articles: state.articles };
+};
+
+export default connect(mapStateToProps)(App);
