@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Form from './components/Form';
+import Post from './components/Posts';
 
 function App({ articles }) {
   return (
@@ -16,6 +17,10 @@ function App({ articles }) {
       <div className="col-md-4 offset-md-1">
         <h2>Add a new article</h2>
         <Form />
+      </div>
+      <div className="col-md-4 offset-md-1">
+        <h2>API posts</h2>
+        <Post />
       </div>
     </div>
   );
